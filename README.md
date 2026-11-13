@@ -11,15 +11,15 @@ github:
   stars_earned: 4
   current_streak: 1 days
   last_year:
-    contributions: 417
-    commits: 348
+    contributions: 426
+    commits: 357
     pull_requests: 3
     issues: 0
     reviews: 0
     repos_contributed_to: 2
   all_time:
-    contributions: 1146
-    commits: 731
+    contributions: 1154
+    commits: 739
     pull_requests: 19
     issues: 28
     reviews: 0
@@ -44,7 +44,7 @@ github:
 | **Configuration** | [nixcfg](https://github.com/klercke/nixcfg): NixOS and Home Manager configs for my desktop and laptop, built with flake-parts using the dendritic pattern |
 | **Writing** | [d0cuments](https://github.com/klercke/d0cuments): my blog on homelabbing, Linux, infrastructure, privacy, and whatever else. Built with Hugo |
 | **Radio** | GMRS, MeshCore/Meshtastic nodes, and ADS-B around Western New York. |
-| **Side projects** | [ProtoBot](https://github.com/klercke/ProtoBot): My Discord Bot |
+| **Side projects** | [ProtoBot](https://github.com/klercke/ProtoBot): Discord bot in Rust with Secret Santa events, dad jokes, and a few server utilities |
 | | [ProtoChess](https://github.com/klercke/ProtoChess): Chess game and engine written in Rust. Unfinished; rewrite incoming. |
 
 #### Past work
