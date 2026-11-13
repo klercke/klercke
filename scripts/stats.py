@@ -7,8 +7,9 @@ import urllib.request
 
 USER = os.environ.get("GH_USER", "klercke")
 TOKEN = os.environ["GITHUB_TOKEN"]
+UTC = datetime.timezone.utc
 
-QUERY = """
+PROFILE_QUERY = """
 query($login: String!) {
   user(login: $login) {
     createdAt
@@ -16,17 +17,8 @@ query($login: String!) {
       totalCount
       nodes { stargazerCount }
     }
-    repositoriesContributedTo(
-      contributionTypes: [COMMIT, PULL_REQUEST, ISSUE, PULL_REQUEST_REVIEW]
-      includeUserRepositories: false
-    ) { totalCount }
-    pullRequests { totalCount }
-    issues { totalCount }
     contributionsCollection {
-      totalCommitContributions
-      restrictedContributionsCount
       contributionCalendar {
-        totalContributions
         weeks { contributionDays { date contributionCount } }
       }
     }
@@ -34,9 +26,35 @@ query($login: String!) {
 }
 """
 
+REPO_FIELDS = "repository { nameWithOwner owner { login } }"
+WINDOW_QUERY = f"""
+query($login: String!, $from: DateTime!, $to: DateTime!) {{
+  user(login: $login) {{
+    contributionsCollection(from: $from, to: $to) {{
+      contributionCalendar {{ totalContributions }}
+      totalCommitContributions
+      totalIssueContributions
+      totalPullRequestContributions
+      totalPullRequestReviewContributions
+      commitContributionsByRepository(maxRepositories: 100) {{ {REPO_FIELDS} }}
+      issueContributionsByRepository(maxRepositories: 100) {{ {REPO_FIELDS} }}
+      pullRequestContributionsByRepository(maxRepositories: 100) {{ {REPO_FIELDS} }}
+      pullRequestReviewContributionsByRepository(maxRepositories: 100) {{ {REPO_FIELDS} }}
+    }}
+  }}
+}}
+"""
 
-def fetch():
-    body = json.dumps({"query": QUERY, "variables": {"login": USER}}).encode()
+BY_REPO_KEYS = (
+    "commitContributionsByRepository",
+    "issueContributionsByRepository",
+    "pullRequestContributionsByRepository",
+    "pullRequestReviewContributionsByRepository",
+)
+
+
+def gql(query, variables):
+    body = json.dumps({"query": query, "variables": variables}).encode()
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=body,
@@ -49,9 +67,44 @@ def fetch():
     return data["data"]["user"]
 
 
+def window(start, end):
+    """Totals and the set of other people's repos contributed to between start and end."""
+    cc = gql(WINDOW_QUERY, {"login": USER, "from": start.isoformat(), "to": end.isoformat()})
+    cc = cc["contributionsCollection"]
+    repos = {
+        entry["repository"]["nameWithOwner"]
+        for key in BY_REPO_KEYS
+        for entry in cc[key]
+        if entry["repository"]["owner"]["login"].lower() != USER.lower()
+    }
+    return {
+        "CONTRIBUTIONS": cc["contributionCalendar"]["totalContributions"],
+        "COMMITS": cc["totalCommitContributions"],
+        "ISSUES": cc["totalIssueContributions"],
+        "PULL_REQUESTS": cc["totalPullRequestContributions"],
+        "REVIEWS": cc["totalPullRequestReviewContributions"],
+    }, repos
+
+
+def all_time(created, now):
+    """Sum every year since signup. GitHub caps each query at one year.
+
+    Windows are whole UTC days that don't overlap, so no day is counted twice.
+    """
+    totals, repos = {}, set()
+    start = datetime.datetime.combine(created.date(), datetime.time.min, UTC)
+    while start <= now:
+        end = min(start + datetime.timedelta(days=365, seconds=-1), now)
+        counts, window_repos = window(start, end)
+        for key, value in counts.items():
+            totals[key] = totals.get(key, 0) + value
+        repos |= window_repos
+        start = end + datetime.timedelta(seconds=1)
+    return totals, repos
+
+
 def streak(weeks):
-    days = [d for w in weeks for d in w["contributionDays"]]
-    days.sort(key=lambda d: d["date"])
+    days = sorted((d for w in weeks for d in w["contributionDays"]), key=lambda d: d["date"])
     if days and days[-1]["contributionCount"] == 0:
         days = days[:-1]  # today isn't over yet, so don't break the streak on it
     count = 0
@@ -62,22 +115,26 @@ def streak(weeks):
     return count
 
 
-def stats(user):
+def stats():
+    now = datetime.datetime.now(UTC)
+    user = gql(PROFILE_QUERY, {"login": USER})
     created = datetime.datetime.fromisoformat(user["createdAt"].replace("Z", "+00:00"))
-    years = (datetime.datetime.now(datetime.timezone.utc) - created).days // 365
-    cc = user["contributionsCollection"]
-    return {
-        "ACCOUNT_AGE": years,
-        "CONTRIBUTIONS": cc["contributionCalendar"]["totalContributions"],
-        "COMMITS": cc["totalCommitContributions"] + cc["restrictedContributionsCount"],
-        "PULL_REQUESTS": user["pullRequests"]["totalCount"],
-        "ISSUES": user["issues"]["totalCount"],
+
+    last_year, last_year_repos = window(now - datetime.timedelta(days=365), now)
+    lifetime, lifetime_repos = all_time(created, now)
+
+    values = {
+        "ACCOUNT_AGE": (now - created).days // 365,
         "REPOSITORIES": user["repositories"]["totalCount"],
         "STARS": sum(r["stargazerCount"] for r in user["repositories"]["nodes"]),
-        "CONTRIBUTED_TO": user["repositoriesContributedTo"]["totalCount"],
-        "STREAK": streak(cc["contributionCalendar"]["weeks"]),
-        "UPDATED": datetime.date.today().isoformat(),
+        "STREAK": streak(user["contributionsCollection"]["contributionCalendar"]["weeks"]),
+        "UPDATED": now.date().isoformat(),
+        "LY_CONTRIBUTED_TO": len(last_year_repos),
+        "AT_CONTRIBUTED_TO": len(lifetime_repos),
     }
+    values.update({f"LY_{k}": v for k, v in last_year.items()})
+    values.update({f"AT_{k}": v for k, v in lifetime.items()})
+    return values
 
 
 def render(template, values):
@@ -87,7 +144,7 @@ def render(template, values):
 
 
 if __name__ == "__main__":
-    values = stats(fetch())
+    values = stats()
     with open("TEMPLATE.md") as f:
         out = render(f.read(), values)
     with open("README.md", "w") as f:

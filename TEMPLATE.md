@@ -5,16 +5,26 @@ pronounced: KLER-key
 aliases: [klercke, d0c_z3r0d4y, PrototypeXenon]
 location: Western New York
 role: Everything-as-Code Enthusiast, Homelabber, RF Tinkerer
+# registries/people/klercke.yaml
 github:
   member_for: {{ ACCOUNT_AGE }} years
-  contributions_last_year: {{ CONTRIBUTIONS }}
-  commits_last_year: {{ COMMITS }}
-  pull_requests: {{ PULL_REQUESTS }}
-  issues: {{ ISSUES }}
   public_repos: {{ REPOSITORIES }}
   stars_earned: {{ STARS }}
-  repos_contributed_to: {{ CONTRIBUTED_TO }}
   current_streak: {{ STREAK }} days
+  last_year:
+    contributions: {{ LY_CONTRIBUTIONS }}
+    commits: {{ LY_COMMITS }}
+    pull_requests: {{ LY_PULL_REQUESTS }}
+    issues: {{ LY_ISSUES }}
+    reviews: {{ LY_REVIEWS }}
+    repos_contributed_to: {{ LY_CONTRIBUTED_TO }}
+  all_time:
+    contributions: {{ AT_CONTRIBUTIONS }}
+    commits: {{ AT_COMMITS }}
+    pull_requests: {{ AT_PULL_REQUESTS }}
+    issues: {{ AT_ISSUES }}
+    reviews: {{ AT_REVIEWS }}
+    repos_contributed_to: {{ AT_CONTRIBUTED_TO }}
 ```
 
 [![pgp](https://img.shields.io/badge/pgp-0x249DF839A80D37DD-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
