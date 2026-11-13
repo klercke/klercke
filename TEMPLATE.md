@@ -5,7 +5,6 @@ pronounced: KLER-key
 aliases: [klercke, d0c_z3r0d4y, PrototypeXenon]
 location: Western New York
 role: Everything-as-Code Enthusiast, Homelabber, RF Tinkerer
-# registries/people/klercke.yaml
 github:
   member_for: {{ ACCOUNT_AGE }} years
   public_repos: {{ REPOSITORIES }}
@@ -39,17 +38,17 @@ github:
 
 #### Current projects
 
-| | |
+| Area | Project |
 | --- | --- |
-| **Infrastructure** | [homelab-as-code](https://github.com/klercke/homelab-as-code): ProtoNet, my homelab. A Proxmox cluster with DNS, DHCP, ingress, and monitoring, all driven from YAML registries with OpenTofu and Ansible. |
-| **Workstations** | [nixcfg](https://github.com/klercke/nixcfg): NixOS and Home Manager configs for my machines. |
-| **Writing** | [d0cuments](https://blog.z3r0d4y.dev): homelabbing, Linux, and infrastructure. |
+| **Infrastructure** | {{ REPO:klercke/homelab-as-code }} |
+| **Configuration** | {{ REPO:klercke/nixcfg }} |
+| **Writing** | {{ REPO:klercke/d0cuments }} |
 | **Radio** | GMRS, MeshCore/Meshtastic nodes, and ADS-B around Western New York. |
-| **Side projects** | [ProtoBot](https://github.com/klercke/ProtoBot): a modular Discord bot in Rust. |
-| | [ProtoChess](https://github.com/klercke/ProtoChess): a chess engine in Rust, currently being rewritten from scratch. |
+| **Side projects** | {{ REPO:klercke/ProtoBot }} |
+| | {{ REPO:klercke/ProtoChess }} |
 
 #### Past work
 
-- [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): CTF challenges built around an ICMP C2 server in Rust
+- {{ REPO:klercke/WiCyS-RIT-CTF-2023 }}
 
-<sub>The registry entry above is regenerated daily by a GitHub Action. Last run: {{ UPDATED }}.</sub>
+<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: {{ UPDATED }}.</sub>

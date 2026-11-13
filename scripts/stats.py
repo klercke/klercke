@@ -3,6 +3,7 @@
 import datetime
 import json
 import os
+import re
 import urllib.request
 
 USER = os.environ.get("GH_USER", "klercke")
@@ -137,6 +138,46 @@ def stats():
     return values
 
 
+REPO_PLACEHOLDER = re.compile(r"\{\{ REPO:([\w.-]+)/([\w.-]+) \}\}")
+
+
+def repo_links(template):
+    """Expand {{ REPO:owner/name }} into a link plus the repo's own GitHub description."""
+    found = sorted(set(REPO_PLACEHOLDER.findall(template)))
+    if not found:
+        return {}
+    fields = "\n".join(
+        f'r{i}: repository(owner: "{owner}", name: "{name}") {{ name url description }}'
+        for i, (owner, name) in enumerate(found)
+    )
+    body = json.dumps({"query": f"query {{ {fields} }}"}).encode()
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=body,
+        headers={"Authorization": f"bearer {TOKEN}", "Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req) as resp:
+        data = json.load(resp).get("data") or {}
+
+    links = {}
+    for i, (owner, name) in enumerate(found):
+        key = f"REPO:{owner}/{name}"
+        repo = data.get(f"r{i}")
+        if repo is None:
+            # Private, renamed, or missing: show the name without a dead link.
+            print(f"warning: {owner}/{name} not found, rendering without a link")
+            links[key] = name
+            continue
+        description = (repo["description"] or "").strip()
+        # Drop a leading "name: " so "[d0cuments](...): d0cuments: my blog" doesn't repeat itself.
+        prefix = f"{repo['name']}:".lower()
+        if description.lower().startswith(prefix):
+            description = description[len(prefix):].strip()
+        link = f"[{repo['name']}]({repo['url']})"
+        links[key] = f"{link}: {description}" if description else link
+    return links
+
+
 def render(template, values):
     for key, value in values.items():
         template = template.replace("{{ " + key + " }}", str(value))
@@ -144,9 +185,11 @@ def render(template, values):
 
 
 if __name__ == "__main__":
-    values = stats()
     with open("TEMPLATE.md") as f:
-        out = render(f.read(), values)
+        template = f.read()
+    values = stats()
+    values.update(repo_links(template))
+    out = render(template, values)
     with open("README.md", "w") as f:
         f.write(out)
     print(json.dumps(values, indent=2))
