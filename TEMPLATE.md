@@ -40,6 +40,7 @@ github:
 
 | Area | Project |
 | --- | --- |
+| **Website** | {{ REPO:klercke/website }} |
 | **Infrastructure** | {{ REPO:klercke/homelab-as-code }} |
 | **Configuration** | {{ REPO:klercke/nixcfg }} |
 | **Writing** | {{ REPO:klercke/d0cuments }} |
