@@ -11,15 +11,15 @@ github:
   stars_earned: 4
   current_streak: 2 days
   last_year:
-    contributions: 443
-    commits: 371
+    contributions: 446
+    commits: 374
     pull_requests: 5
     issues: 0
     reviews: 0
     repos_contributed_to: 2
   all_time:
-    contributions: 1171
-    commits: 753
+    contributions: 1174
+    commits: 756
     pull_requests: 21
     issues: 28
     reviews: 0
@@ -40,6 +40,7 @@ github:
 
 | Area | Project |
 | --- | --- |
+| **Website** | [website](https://github.com/klercke/website): Source for z3r0d4y.dev: my static personal website served over HTTPS and SSH. Rewrite in progress. |
 | **Infrastructure** | [homelab-as-code](https://github.com/klercke/homelab-as-code): Infrastructure as code for my homelab: an enterprise-flavored network built from YAML files |
 | **Configuration** | [nixcfg](https://github.com/klercke/nixcfg): NixOS and Home Manager configs for my desktop and laptop, built with flake-parts using the dendritic pattern |
 | **Writing** | [d0cuments](https://github.com/klercke/d0cuments): my blog on homelabbing, Linux, infrastructure, privacy, and whatever else. Built with Hugo |
