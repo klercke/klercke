@@ -9,18 +9,18 @@ github:
   member_for: 12 years
   public_repos: 11
   stars_earned: 4
-  current_streak: 1 days
+  current_streak: 2 days
   last_year:
-    contributions: 426
-    commits: 357
-    pull_requests: 3
+    contributions: 443
+    commits: 371
+    pull_requests: 5
     issues: 0
     reviews: 0
     repos_contributed_to: 2
   all_time:
-    contributions: 1154
-    commits: 739
-    pull_requests: 19
+    contributions: 1171
+    commits: 753
+    pull_requests: 21
     issues: 28
     reviews: 0
     repos_contributed_to: 18
@@ -49,6 +49,6 @@ github:
 
 #### Past work
 
-- [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): Challenges I created for WiCyS RIT CTF 2023
+- [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): Two-part CTF challenge I wrote for WiCyS RIT CTF 2023, including an ICMP C2 server written in Rust
 
-<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-13.</sub>
+<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-14.</sub>
