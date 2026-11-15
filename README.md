@@ -11,23 +11,23 @@ github:
   stars_earned: 4
   current_streak: 2 days
   last_year:
-    contributions: 446
-    commits: 374
-    pull_requests: 5
+    contributions: 475
+    commits: 402
+    pull_requests: 6
     issues: 0
     reviews: 0
     repos_contributed_to: 2
   all_time:
-    contributions: 1174
-    commits: 756
-    pull_requests: 21
+    contributions: 1203
+    commits: 784
+    pull_requests: 22
     issues: 28
     reviews: 0
     repos_contributed_to: 18
 ```
 
 [![pgp](https://img.shields.io/badge/pgp-0x249DF839A80D37DD-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
-[![blog](https://img.shields.io/badge/blog-d0cuments-3c3836?style=flat&labelColor=282828)](https://blog.z3r0d4y.dev)
+[![blog](https://img.shields.io/badge/blog-d0cuments-3c3836?style=flat&labelColor=282828)](https://blog.klercke.com)
 
 ![NixOS](https://img.shields.io/badge/NixOS-3c3836?style=flat&logo=nixos&logoColor=fabd2f)
 ![OpenTofu](https://img.shields.io/badge/OpenTofu-3c3836?style=flat&logo=opentofu&logoColor=fabd2f)
@@ -40,7 +40,7 @@ github:
 
 | Area | Project |
 | --- | --- |
-| **Website** | [website](https://github.com/klercke/website): Source for z3r0d4y.dev: my static personal website served over HTTPS and SSH. Rewrite in progress. |
+| **Website** | [website](https://github.com/klercke/website): Source for klercke.com: my static personal website served over HTTPS and SSH. |
 | **Infrastructure** | [homelab-as-code](https://github.com/klercke/homelab-as-code): Infrastructure as code for my homelab: an enterprise-flavored network built from YAML files |
 | **Configuration** | [nixcfg](https://github.com/klercke/nixcfg): NixOS and Home Manager configs for my desktop and laptop, built with flake-parts using the dendritic pattern |
 | **Writing** | [d0cuments](https://github.com/klercke/d0cuments): my blog on homelabbing, Linux, infrastructure, privacy, and whatever else. Built with Hugo |
@@ -52,4 +52,4 @@ github:
 
 - [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): Two-part CTF challenge I wrote for WiCyS RIT CTF 2023, including an ICMP C2 server written in Rust
 
-<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-14.</sub>
+<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-15.</sub>
