@@ -52,4 +52,4 @@ github:
 
 - [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): Two-part CTF challenge I wrote for WiCyS RIT CTF 2023, including an ICMP C2 server written in Rust
 
-<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-18.</sub>
+<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-19.</sub>
