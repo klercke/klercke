@@ -9,7 +9,7 @@ github:
   member_for: {{ ACCOUNT_AGE }} years
   public_repos: {{ REPOSITORIES }}
   stars_earned: {{ STARS }}
-  current_streak: {{ STREAK }} days
+  current_streak: {{ STREAK }} day(s)
   last_year:
     contributions: {{ LY_CONTRIBUTIONS }}
     commits: {{ LY_COMMITS }}
