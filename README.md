@@ -11,23 +11,27 @@ github:
   stars_earned: 4
   current_streak: 6 day(s)
   last_year:
-    contributions: 678
-    commits: 504
-    pull_requests: 49
-    issues: 55
+    contributions: 685
+    commits: 508
+    pull_requests: 51
+    issues: 56
     reviews: 4
     repos_contributed_to: 2
   all_time:
-    contributions: 1406
-    commits: 887
-    pull_requests: 65
-    issues: 83
+    contributions: 1413
+    commits: 891
+    pull_requests: 67
+    issues: 84
     reviews: 4
     repos_contributed_to: 18
 ```
 
-[![pgp](https://img.shields.io/badge/pgp-0x249DF839A80D37DD-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
+[![pgp](https://img.shields.io/badge/pgp-0x6D08129B14785597-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
+[![keyoxide](https://img.shields.io/badge/keyoxide-verified-3c3836?style=flat&labelColor=282828)](https://keyoxide.org/6D08129B14785597)
+[![web](https://img.shields.io/badge/web-klercke.com-3c3836?style=flat&labelColor=282828)](https://klercke.com)
+[![web-shell](https://img.shields.io/badge/ssh-klercke.com-3c3836?style=flat&labelColor=282828)](https://klercke.com/shell)
 [![blog](https://img.shields.io/badge/blog-d0cuments-3c3836?style=flat&labelColor=282828)](https://blog.klercke.com)
+[![bluesky](https://img.shields.io/badge/bluesky-%40klercke.com-3c3836?style=flat&labelColor=282828)](https://bsky.app/profile/klercke.com)
 
 ![NixOS](https://img.shields.io/badge/NixOS-3c3836?style=flat&logo=nixos&logoColor=fabd2f)
 ![OpenTofu](https://img.shields.io/badge/OpenTofu-3c3836?style=flat&logo=opentofu&logoColor=fabd2f)
@@ -52,4 +56,4 @@ github:
 
 - [WiCyS-RIT-CTF-2023](https://github.com/klercke/WiCyS-RIT-CTF-2023): Two-part CTF challenge I wrote for WiCyS RIT CTF 2023, including an ICMP C2 server written in Rust
 
-<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-26.</sub>
+<sub>The registry entry and project descriptions above are regenerated daily by a GitHub Action. Last run: 2026-11-27.</sub>
