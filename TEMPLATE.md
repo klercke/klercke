@@ -26,7 +26,7 @@ github:
     repos_contributed_to: {{ AT_CONTRIBUTED_TO }}
 ```
 
-[![pgp](https://img.shields.io/badge/pgp-0x249DF839A80D37DD-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
+[![pgp](https://img.shields.io/badge/pgp-0x6D08129B14785597-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
 [![blog](https://img.shields.io/badge/blog-d0cuments-3c3836?style=flat&labelColor=282828)](https://blog.klercke.com)
 
 ![NixOS](https://img.shields.io/badge/NixOS-3c3836?style=flat&logo=nixos&logoColor=fabd2f)
