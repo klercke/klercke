@@ -27,7 +27,11 @@ github:
 ```
 
 [![pgp](https://img.shields.io/badge/pgp-0x6D08129B14785597-3c3836?style=flat&labelColor=282828)](https://github.com/klercke.gpg)
+[![keyoxide](https://img.shields.io/badge/keyoxide-verified-3c3836?style=flat&labelColor=282828)](https://keyoxide.org/6D08129B14785597)
+[![web](https://img.shields.io/badge/web-klercke.com-3c3836?style=flat&labelColor=282828)](https://klercke.com)
+[![web-shell](https://img.shields.io/badge/ssh-klercke.com-3c3836?style=flat&labelColor=282828)](https://klercke.com/shell)
 [![blog](https://img.shields.io/badge/blog-d0cuments-3c3836?style=flat&labelColor=282828)](https://blog.klercke.com)
+[![bluesky](https://img.shields.io/badge/bluesky-%40klercke.com-3c3836?style=flat&labelColor=282828)](https://bsky.app/profile/klercke.com)
 
 ![NixOS](https://img.shields.io/badge/NixOS-3c3836?style=flat&logo=nixos&logoColor=fabd2f)
 ![OpenTofu](https://img.shields.io/badge/OpenTofu-3c3836?style=flat&logo=opentofu&logoColor=fabd2f)
